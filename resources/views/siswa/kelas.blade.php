@@ -1,31 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Form kelas</h1>
-    <from action="{{ url('siswa') }}" method="POST">
-    @csrf
+belajar laravel, tulisan ini ditampilkan dari routes
+<br>
+@session('success')
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+    @endsession
 
-    <label for="id_kelas">ID Kelas:</label><br>
-        <input type="text" id="id_kelas" name="id_kelas"><br>
-        
-        <label for="nama_kelas">Nama Kelas:</label><br>
-        <input type="text" id="nama_kelas" name="nama_kelas"><br>   
-        
-        <label for="jurusan">Jurusan:</label><br>
-        <input type="text" id="jurusan" name="jurusan"><br>
-        
-        <label for="lokasi_ruangan">Lokasi Ruangan:</label><br>
-        <input type="text" id="lokasi_ruangan" name="lokasi_ruangan"><br>
-        
-        <label for="nama_wali_kelas">Nama Wali Kelas:</label><br>
-        <input type="text" id="nama_wali_kelas" name="nama_wali_kelas"><br><br>
-        
-        <input type="submit" value="Submit">
-</from>
-</body>
-</html>
+    @session('error')
+    <div class="alert alert-error">
+        {{ session('error') }}
+    </div>
+
+    @endsession
+<a href="{{ url('/kelas/create') }}">Tambah Data</a>
+<table border="1">
+    <tr>
+        <td>Id kelas</td>
+        <td>Nama kelas</td>
+        <td>Jurusan</td>
+        <td>Lokasi ruangan</td>
+        <td>Nama wali kelas</td>
+    </tr>
+    @foreach ($siswa as $row)
+    <tr>
+        <td>{{ $row->id_kelas}}</td>
+        <td>{{ $row->nama_kelas}}</td>
+        <td>{{ $row->jurusan}}</td>
+        <td>{{ $row->lokasi_ruangan}}</td>
+        <td>{{ $row->nama_wali_kelas}}</td>
+    </tr>
+    
+    @endforeach
+</table>

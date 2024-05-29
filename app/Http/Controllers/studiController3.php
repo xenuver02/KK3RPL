@@ -13,6 +13,6 @@ class studiController3 extends Controller
                     ->where('nama_wali_kelas','LIKE', 'A%')
                     ->orderBy('nama_wali_kelas', 'ASC')
                     ->get();
-        return view('kelas', compact('studi'));
+        return view('', compact('studi'));
     }
 }

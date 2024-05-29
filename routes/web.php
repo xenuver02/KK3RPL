@@ -3,6 +3,7 @@
 use App\Http\Controllers\belajar1Controller;
 use App\Http\Controllers\belajar2Controller;
 use App\Http\Controllers\belajar3Controller;
+use App\Http\Controllers\kelas_controller;
 use App\Http\Controllers\nomer1;
 use App\Http\Controllers\nomer3;
 use App\http\Controllers\SiswaController;
@@ -46,7 +47,7 @@ Route::get('/', function(){
     return view('welcome');
 });
 
-Route::get('/kelas', [studiController3::class, 'index']);
+Route::get('/kelas', [kelas_controller::class, 'index']);
 
 Route::get('/', function(){
     return view('welcome');
@@ -71,7 +72,7 @@ Route::get('/siswa', [SiswaController::class, 'index']);
 Route::get('/siswa/create', [SiswaController::class, 'create']);
 Route::post('/siswa', [SiswaController::class, 'store']);
 
-Route::get('/siswa', [nomer1::class, 'index']);
-Route::get('/siswa/create', [nomer1::class, 'create']);
-Route::post('/siswa', [nomer1::class, 'store']);
+Route::get('/siswa', [Kelas_Controller::class, 'index']);
+Route::get('/kelas/create', [kelas_controller::class, 'create']);
+Route::post('/siswa/kelas', [kelas_controller::class, 'store']);
 

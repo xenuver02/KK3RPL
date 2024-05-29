@@ -3,28 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Form Kelas</title>
 </head>
 <body>
-    <h1>Form siswa</h1>
-    <Form action="{{ url('siswa') }}" method="POST">
-    @csrf
+@if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+    @if (session('error'))
+        <div class="alert alert-error">
+            {{ session('error') }}
+        </div>
+    @endif
 
-    NIS : <input type="text" name="nis"><br>
-    Nama Lengkap : <input type="text" name="nama_lengkap"><br>
-    Jenis Kelamin : <br>
-    <label for="L"><input type="radio" name="JK" id="L" value="L">Laki-Laki</label>
-    <label for="P"><input type="radio" name="JK" id="P" value="P">Perempuan</label>
-    <br>
-    Golongan Darah :
-    <select name="golongan_darah">
-        <option value="" >Pilih golongan darah</option>
-        <option value="A">A</option>
-        <option value="B">B</option>
-        <option value="AB">AB</option>
-        <option value="O">O</option>
-    </select>
-    <input type="submit" value="Simpan">
-</Form>
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <strong>Perhatian!</strong>
+            <br>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+    <h1>Form Kelas</h1>
+    <form action="{{ url('/siswa/kelas') }}" method="POST">
+        @csrf
+
+        <label for="id_kelas">ID Kelas:</label><br>
+        <input type="text" id="id_kelas" name="id_kelas"  value="{{ old('id_kelas')}}"><br>
+        
+        <label for="nama_kelas">Nama Kelas:</label><br>
+        <input type="text" id="nama_kelas" name="nama_kelas" value="{{ old('nama_kelas')}}"><br>   
+        
+        <label for="jurusan">Jurusan:</label><br>
+        <input type="text" id="jurusan" name="jurusan" value="{{ old('jurusan')}}"><br>
+        
+        <label for="lokasi_ruangan">Lokasi Ruangan:</label><br>
+        <input type="text" id="lokasi_ruangan" name="lokasi_ruangan" value="{{ old('lokasi_ruangan')}}"><br>
+        
+        <label for="nama_wali_kelas">Nama Wali Kelas:</label><br>
+        <input type="text" id="nama_wali_kelas" name="nama_wali_kelas"><br><br>
+        
+        <input type="submit" value="Submit">
+    </form>
 </body>
 </html>
