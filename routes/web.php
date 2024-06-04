@@ -75,4 +75,7 @@ Route::post('/siswa', [SiswaController::class, 'store']);
 Route::get('/siswa', [Kelas_Controller::class, 'index']);
 Route::get('/kelas/create', [kelas_controller::class, 'create']);
 Route::post('/siswa/kelas', [kelas_controller::class, 'store']);
+Route::get('/siswa/edit/{id}',[Kelas_Controller::class, 'edit']); 
+Route::patch('/siswa/{id}', [kelas_controller::class, 'update']);
+Route::delete('/siswa/{id}', [kelas_controller::class, 'destroy']);
 
